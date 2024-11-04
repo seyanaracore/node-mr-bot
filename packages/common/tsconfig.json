@@ -1,0 +1,28 @@
+{
+  "ts-node": {
+    // Otherwise, ts-node does not see "declare global"
+    // https://stackoverflow.com/questions/51610583/ts-node-ignores-d-ts-files-while-tsc-successfully-compiles-the-project
+    "files": true
+  },
+  "compilerOptions": {
+    "types": ["node"],
+    "outDir": "dist",
+    "baseUrl": "./",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "noImplicitAny": true,
+    "strictPropertyInitialization": true,
+    "strictFunctionTypes": true,
+    "target": "ES6",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "allowJs": true,
+    "checkJs": true,
+    "resolveJsonModule": true,
+    "strictNullChecks": true,
+    "strict": true,
+    "skipLibCheck": true
+  }
+}

@@ -1,0 +1,20 @@
+@use '../../variables' as *;
+
+.n-tabs-nav--segment-type {
+  width: fit-content;
+
+  .n-tabs-rail {
+    padding: 2px;
+
+    .n-tabs-tab-wrapper .n-tabs-tab {
+      &.n-tabs-tab--active {
+        font-weight: $fontWeightNormal;
+        box-shadow: 0 2px 4px 0 rgb(0 0 0 / 2%), 0 1px 6px -1px rgb(0 0 0 / 2%), 0 1px 2px 0 rgb(0 0 0 / 3%);
+      }
+    }
+  }
+}
+
+.n-tabs .n-tabs-nav {
+  line-height: 22px;
+}

@@ -1,0 +1,19 @@
+.n-form-item .n-form-item-label {
+  line-height: 1.5;
+
+  .n-form-item-label__text {
+    line-height: inherit;
+  }
+}
+
+.n-form-item .n-form-item-blank {
+  align-items: flex-start;
+}
+
+.n-form-item.n-form-item--top-labelled .n-form-item-label {
+  margin-bottom: $marginXS;
+}
+
+.n-form-item.n-form-item--left-labelled .n-form-item-label {
+  margin-right: $marginXS;
+}

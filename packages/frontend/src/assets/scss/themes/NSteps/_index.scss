@@ -1,0 +1,4 @@
+.n-steps .n-step.n-step--clickable .n-step-content .n-step-content-header :hover {
+  color: $colorBrandOrange;
+  transition: color 0.3s var(--n-bezier);
+}

@@ -1,0 +1,116 @@
+diff --git a/node_modules/vue-virtual-scroller/dist/vue-virtual-scroller.umd.d.ts b/node_modules/vue-virtual-scroller/dist/vue-virtual-scroller.umd.d.ts
+new file mode 100644
+index 0000000..ef53362
+--- /dev/null
++++ b/node_modules/vue-virtual-scroller/dist/vue-virtual-scroller.umd.d.ts
+@@ -0,0 +1,109 @@
++import Scroller from 'vue-virtual-scroller/dist/DynamicScroller'
++
++type __VLS_PrettifyLocal<T> = {
++	[K in keyof T]: T[K];
++} & {};
++
++export declare const DynamicScroller: <T>(__VLS_props: NonNullable<Awaited<typeof __VLS_setup>>["props"], __VLS_ctx?: __VLS_PrettifyLocal<Pick<NonNullable<Awaited<typeof __VLS_setup>>, "attrs" | "emit" | "slots">>, __VLS_expose?: NonNullable<Awaited<typeof __VLS_setup>>["expose"], __VLS_setup?: Promise<{
++	props: __VLS_PrettifyLocal<Pick<Partial<{
++			direction: "horizontal" | "vertical";
++			keyField: string;
++			listTag: string;
++			itemTag: string;
++	}> & Omit<{
++			readonly direction: "horizontal" | "vertical";
++			readonly items: T[];
++			readonly keyField: string;
++			readonly minItemSize: string | number;
++			readonly listTag: string;
++			readonly itemTag: string;
++	} & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "direction" | "keyField" | "listTag" | "itemTag">, "items" | "minItemSize" | ("direction" | "keyField" | "listTag" | "itemTag")> & Partial<{}> & {}> & import("vue").PublicProps;
++	expose(exposed: import("vue").ShallowUnwrapRef<{}>): void;
++	attrs: any;
++	slots: Readonly<{
++			default(props: {
++					item: T;
++					active: boolean;
++					index: number;
++			}): void;
++	}> & {
++			default(props: {
++					item: T;
++					active: boolean;
++					index: number;
++			}): void;
++	};
++	emit: {};
++}>) => import("vue").VNode<import("vue").RendererNode, import("vue").RendererElement, {
++	[key: string]: any;
++}> & {
++	__ctx?: Awaited<typeof __VLS_setup>;
++};
++
++export declare const DynamicScrollerItem: import("vue").DefineComponent<import("vue").ExtractPropTypes<{
++	item: {
++			required: true;
++	};
++	watchData: {
++			type: BooleanConstructor;
++			default: boolean;
++	};
++	active: {
++			type: BooleanConstructor;
++			required: true;
++	};
++	index: {
++			type: NumberConstructor;
++			default: any;
++	};
++	sizeDependencies: {
++			type: (ObjectConstructor | ArrayConstructor)[];
++			default: any;
++	};
++	emitResize: {
++			type: BooleanConstructor;
++			default: boolean;
++	};
++	tag: {
++			type: StringConstructor;
++			default: string;
++	};
++}>, {}, {}, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, {
++	resize: (...args: any[]) => void;
++}, string, import("vue").PublicProps, Readonly<import("vue").ExtractPropTypes<{
++	item: {
++			required: true;
++	};
++	watchData: {
++			type: BooleanConstructor;
++			default: boolean;
++	};
++	active: {
++			type: BooleanConstructor;
++			required: true;
++	};
++	index: {
++			type: NumberConstructor;
++			default: any;
++	};
++	sizeDependencies: {
++			type: (ObjectConstructor | ArrayConstructor)[];
++			default: any;
++	};
++	emitResize: {
++			type: BooleanConstructor;
++			default: boolean;
++	};
++	tag: {
++			type: StringConstructor;
++			default: string;
++	};
++}>> & Readonly<{
++	onResize?: (...args: any[]) => any;
++}>, {
++	index: number;
++	tag: string;
++	watchData: boolean;
++	sizeDependencies: unknown[] | Record<string, any>;
++	emitResize: boolean;
++}, {}, {}, {}, string, import("vue").ComponentProvideOptions, true, {}, HTMLDivElement>;
+\ No newline at end of file

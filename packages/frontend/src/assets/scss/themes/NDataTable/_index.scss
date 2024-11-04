@@ -1,0 +1,22 @@
+.n-data-table[data-summary] .n-data-table-wrapper {
+  border-top-left-radius: $borderRadiusLG;
+  border-top-right-radius: $borderRadiusLG;
+}
+
+.n-data-table:not([data-summary]) .n-data-table-wrapper {
+  border-radius: $borderRadiusLG;
+}
+
+.n-data-table .n-data-table-wrapper .n-data-table-tr .n-data-table-th:not(:last-child) .n-data-table-th__title-wrapper {
+  border-right: 1px solid $colorBorderSecondary;
+}
+
+.n-data-table {
+  .n-data-table-td {
+    vertical-align: middle;
+
+    & > * {
+      vertical-align: bottom;
+    }
+  }
+}

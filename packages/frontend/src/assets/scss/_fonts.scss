@@ -1,0 +1,147 @@
+@use './variables/fonts';
+@use 'mixins/fonts' as *;
+
+$ext: woff2;
+$display: swap;
+$fontName: fonts.$fontName;
+
+// Paths
+$fontFileBaseName: 'GolosText';
+$fontFileBasePath: '@/assets/fonts/#{$fontName}/#{$ext}';
+$fontFilePath: '#{$fontFileBasePath}/#{$fontFileBaseName}';
+
+// 400
+@include font-face($fontName, '#{$fontFilePath}-Regular', 400, normal, $ext, $display);
+
+// 500
+@include font-face($fontName, '#{$fontFilePath}-Medium', 500, normal, $ext, $display);
+
+// 600
+@include font-face($fontName, '#{$fontFilePath}-SemiBold', 600, normal, $ext, $display);
+
+// 700
+@include font-face($fontName, '#{$fontFilePath}-Bold', 700, normal, $ext, $display);
+
+// 800
+@include font-face($fontName, '#{$fontFilePath}-ExtraBold', 800, normal, $ext, $display);
+
+// 900
+@include font-face($fontName, '#{$fontFilePath}-Black', 900, normal, $ext, $display);
+
+// --------------
+
+.font-400-12-18 {
+  @include font(400, 12px, 18px);
+}
+
+.font-400-12-20 {
+  @include font(400, 12px, 20px);
+}
+
+.font-400-14-20 {
+  @include font(400, 14px, 20px);
+}
+
+.font-400-14-22 {
+  @include font(400, 14px, 22px);
+}
+
+.font-400-14-24 {
+  @include font(400, 14px, 24px);
+}
+
+.font-400-16-24 {
+  @include font(400, 16px, 24px);
+}
+
+.font-400-20-28 {
+  @include font(400, 20px, 28px);
+}
+
+.font-400-24-32 {
+  @include font(400, 24px, 32px);
+}
+
+.font-400-30-38 {
+  @include font(400, 30px, 38px);
+}
+
+.font-400-32-38 {
+  @include font(400, 32px, 38px);
+}
+
+.font-500-12-18 {
+  @include font(500, 12px, 18px);
+}
+
+.font-500-14-18 {
+  @include font(500, 14px, 18px);
+}
+
+.font-500-14-22 {
+  @include font(500, 14px, 22px);
+}
+
+.font-500-16-20 {
+  @include font(500, 16px, 20px);
+}
+
+.font-500-16-24 {
+  @include font(500, 16px, 24px);
+}
+
+.font-600-14-22 {
+  @include font(600, 14px, 22px);
+}
+
+.font-600-14-24 {
+  @include font(600, 14px, 24px);
+}
+
+.font-600-16-24 {
+  @include font(600, 16px, 24px);
+}
+
+.font-600-18-26 {
+  @include font(600, 18px, 26px);
+}
+
+.font-600-20-24 {
+  @include font(600, 20px, 24px);
+}
+
+.font-600-20-28 {
+  @include font(600, 20px, 28px);
+}
+
+.font-600-24-28 {
+  @include font(600, 24px, 28px);
+}
+
+.font-600-20-32 {
+  @include font(600, 20px, 32px);
+}
+
+.font-600-24-32 {
+  @include font(600, 24px, 32px);
+}
+
+.font-600-28-38 {
+  @include font(600, 28px, 38px);
+}
+
+.font-600-30-38 {
+  @include font(600, 30px, 38px);
+}
+
+.font-700-18-24 {
+  @include font(700, 18px, 24px);
+}
+
+.font-700-38-42 {
+  @include font(700, 38px, 42px);
+}
+
+.font-800-72-72 {
+  @include font(800, 72px, 72px);
+}

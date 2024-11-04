@@ -1,0 +1,40 @@
+@use './modules/margins.module' as margins;
+
+.fd-row {
+  display: flex;
+}
+
+.fd-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.ai-center {
+  align-items: center;
+}
+
+.ai-flex-start {
+  align-items: flex-start;
+}
+
+.ai-flex-end {
+  align-items: flex-end;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.jc-sb {
+  justify-content: space-between;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+@each $k, $v in margins.$mapModule {
+  .gap-#{$k} {
+    gap: $v;
+  }
+}

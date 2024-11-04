@@ -1,0 +1,7 @@
+@use '../../variables' as *;
+
+.n-time-picker-cols {
+  .n-time-picker-col:not(:last-child) {
+    border-right: 1px solid $colorSplit;
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "@packages/common",
+  "private": true,
+  "type": "commonjs",
+  "peerDependencies": {
+    "@types/eslint": "^8.56.10",
+    "stylelint": "^15.11.0",
+    "stylelint-config-clean-order": "^5.2.0",
+    "stylelint-config-standard-scss": "^11.1.0",
+    "stylelint-order": "^6.0.4",
+    "stylelint-scss": "^5.3.2",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-import-resolver-typescript": "3.6.3",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-promise": "^6.6.0",
+    "eslint-plugin-sonarjs": "^2.0.4"
+  }
+}

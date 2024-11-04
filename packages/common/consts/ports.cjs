@@ -1,0 +1,4 @@
+const DEFAULT_PORT = 3000;
+const DEFAULT_FRONT_PORT = 8000;
+
+module.exports = { DEFAULT_PORT, DEFAULT_FRONT_PORT };

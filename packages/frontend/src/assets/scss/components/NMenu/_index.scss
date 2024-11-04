@@ -1,0 +1,18 @@
+@use '../../variables' as *;
+
+.n-menu.n-menu--vertical {
+  padding: $paddingXXS;
+}
+
+.n-menu .n-menu-item-content::before {
+  right: 0;
+  left: 0;
+}
+
+.n-menu .n-menu-item {
+  margin-top: 0;
+
+  &:not(:first-child) {
+    margin-top: $marginXS;
+  }
+}

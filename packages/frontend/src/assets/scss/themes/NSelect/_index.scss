@@ -1,0 +1,17 @@
+.n-select .n-base-selection .n-base-selection-tags {
+  gap: $paddingXXS;
+
+  .n-base-selection-tag-wrapper {
+    padding: 0;
+
+    .n-tag {
+      background-color: $colorBgContainerDisabled;
+      border-color: transparent;
+      border-radius: $borderRadiusSM;
+
+      &__border {
+        border: none;
+      }
+    }
+  }
+}
