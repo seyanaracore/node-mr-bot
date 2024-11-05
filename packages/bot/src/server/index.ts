@@ -2,9 +2,11 @@ import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 import { getServerConfig } from './config'
-import serverLogger from './logger'
 import { FRONTEND_BUILD_PATH } from './consts'
 import router from '@server/routes'
+import getLogger from '@/logger'
+
+const serverLogger = getLogger({ label: '[server]' })
 
 const morganMiddleware = morgan(
   'tiny',

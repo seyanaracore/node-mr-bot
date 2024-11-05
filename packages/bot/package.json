@@ -4,9 +4,9 @@
   "private": true,
   "type": "commonjs",
   "scripts": {
-    "start": "ts-node pmRunner.ts start",
     "logs": "ts-node pmRunner.ts logs --lines 0",
     "stop": "ts-node pmRunner.ts delete",
+    "build": "tsc -p tsconfig.prod.json && tsc-alias -p tsconfig.prod.json",
     "dev": "ts-node pmRunner.ts start --watch --ignore-watch=\"*.log,config.json\" && npm run logs",
     "lint": "eslint './**/*.{js,ts}' --fix",
     "type-check": "tsc --noEmit"
@@ -49,7 +49,8 @@
     "eslint-plugin-sonarjs": "^2.0.4",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "tsc-alias": "^1.8.10"
   },
   "volta": {
     "node": "20.18.0",

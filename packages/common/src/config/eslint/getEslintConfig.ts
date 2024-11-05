@@ -1,14 +1,8 @@
-// @ts-check
+import { OFF, ERROR, WARN } from './rulesValues';
+import type { GetEslintConfig, EslintConfig } from './types'
 
-const { OFF, ERROR, WARN } = require('./rulesValues.cjs');
-
-/** @typedef {import('./types').GetEslintConfig} GetEslintConfig */
-/** @typedef {import('./types').EslintConfig} EslintConfig */
-
-/** @type {GetEslintConfig} */
-const getEslintConfig = ({ tsConfig }) => {
-  /** @type {EslintConfig} */
-  const config = {
+export const getEslintConfig: GetEslintConfig = ({ tsConfig }) => {
+  const config: EslintConfig = {
     env: {
       es2024: true,
     },
@@ -117,5 +111,3 @@ const getEslintConfig = ({ tsConfig }) => {
 
   return config;
 };
-
-module.exports = getEslintConfig;

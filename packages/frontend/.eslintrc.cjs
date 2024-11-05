@@ -1,15 +1,15 @@
 // @ts-check
 
 const path = require('node:path')
-const getBaseConfig = require('@packages/common/config/eslint/getEslintConfig.cjs')
-const { OFF, READONLY, ERROR } = require('@packages/common/config/eslint/rulesValues.cjs')
+const { getEslintConfig } = require('@packages/common/dist/config/eslint/getEslintConfig')
+const { OFF, READONLY, ERROR } = require('@packages/common/dist/config/eslint/rulesValues')
 
-const readJson = require('@packages/common/config/helpers/readJson.cjs')
+const { readJson } = require('@packages/common/dist/config/helpers')
 
 const tsConfig = path.resolve(__dirname, 'tsconfig.app.json')
 const nodeConfig = path.resolve(__dirname, 'tsconfig.node.json')
 
-const baseConfig = getBaseConfig({
+const baseConfig = getEslintConfig({
   tsConfig,
 })
 

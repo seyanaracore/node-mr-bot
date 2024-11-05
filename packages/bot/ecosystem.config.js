@@ -6,7 +6,9 @@ module.exports = {
   apps: [
     {
       name: 'bot',
-      script: 'ts-node -r tsconfig-paths/register -r dotenv/config src/index.ts',
+      script: process.env.NODE_ENV === 'production'
+        ? 'node -r dotenv/config dist/index.js'
+        : 'ts-node -r tsconfig-paths/register -r dotenv/config src/index.ts',
       error_file: errorsFilePath,
       instances: 1,
       watch: false,

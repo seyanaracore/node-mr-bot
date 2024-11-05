@@ -1,21 +1,18 @@
 // @ts-check
 
 const path = require('node:path')
-const getBaseConfig = require('@packages/common/config/eslint/getEslintConfig.cjs')
-const { OFF } = require('@packages/common/config/eslint/rulesValues.cjs')
+
+const { getEslintConfig } = require('@packages/common/dist/config/eslint/getEslintConfig')
+const { OFF } = require('@packages/common/dist/config/eslint/rulesValues')
 
 const tsConfig = path.resolve(__dirname, 'tsconfig.json')
 
-/**
- * @typedef {import('@packages/common/config/eslint/types').EslintConfig} EslintConfig
- */
-
-const baseConfig = getBaseConfig({
+const baseConfig = getEslintConfig({
   tsConfig,
 })
 
 /**
- * @type {EslintConfig}
+ * @type {typeof baseConfig}
  */
 const config = {
   ...baseConfig,
@@ -23,7 +20,7 @@ const config = {
     ...baseConfig.env,
     node: true,
   },
-  ignorePatterns: ['.eslintrc.js', 'frontend-build'],
+  ignorePatterns: ['.eslintrc.js', 'dist'],
   rules: {
     ...baseConfig.rules,
     'no-console': OFF,

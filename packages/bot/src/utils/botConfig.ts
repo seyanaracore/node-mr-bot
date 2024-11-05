@@ -1,14 +1,12 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import defaultConfig from '../config/config.default.json'
 import type { BotConfig } from '@/types'
 
-const DEFAULT_CONFIG_PATH = path.resolve(__dirname, '../config/config.default.json')
 const CONFIG_PATH = path.resolve(__dirname, '../config/config.json')
 
 function resetConfig() {
-  const defaultConfig = fs.readFileSync(DEFAULT_CONFIG_PATH, 'utf8')
-
-  fs.writeFileSync(CONFIG_PATH, defaultConfig, {
+  fs.writeFileSync(CONFIG_PATH, JSON.stringify(defaultConfig), {
     encoding: 'utf8',
   })
 }

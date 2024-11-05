@@ -1,1 +1,1 @@
-export * from '@packages/common/utils/server'
+export * from '@packages/common/dist/utils/server'

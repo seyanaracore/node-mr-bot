@@ -2,19 +2,31 @@
   "name": "@packages/common",
   "private": true,
   "type": "commonjs",
+  "scripts": {
+    "build:module": "tsc --project tsconfig-module.json",
+    "build:common": "tsc --project tsconfig-common.json",
+    "build": "npm run build:module && node rename-mjs.js && npm run build:common"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "concurrently": "^9.1.0",
+    "glob": "^11.0.0"
+  },
   "peerDependencies": {
+    "json5": "^2.2.3",
     "@types/eslint": "^8.56.10",
-    "stylelint": "^15.11.0",
-    "stylelint-config-clean-order": "^5.2.0",
-    "stylelint-config-standard-scss": "^11.1.0",
-    "stylelint-order": "^6.0.4",
-    "stylelint-scss": "^5.3.2",
+    "axios": "^1.7.7",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-import-resolver-typescript": "3.6.3",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-promise": "^6.6.0",
-    "eslint-plugin-sonarjs": "^2.0.4"
+    "eslint-plugin-sonarjs": "^2.0.4",
+    "stylelint": "^15.11.0",
+    "stylelint-config-clean-order": "^5.2.0",
+    "stylelint-config-standard-scss": "^11.1.0",
+    "stylelint-order": "^6.0.4",
+    "stylelint-scss": "^5.3.2"
   }
 }

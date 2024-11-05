@@ -1,5 +1,5 @@
 import { fileURLToPath, URL } from 'node:url'
-import { DEFAULT_FRONT_PORT, DEFAULT_PORT } from '@packages/common/consts/ports.cjs'
+import { DEFAULT_FRONT_PORT, DEFAULT_PORT } from '@packages/common/dist/consts/ports.mjs'
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
