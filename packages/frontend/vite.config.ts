@@ -7,8 +7,8 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
-  const API_URL = env.API_URL ?? `http://localhost:${DEFAULT_PORT}`
-  const port = env.VITE_PORT ? +env.VITE_PORT : DEFAULT_FRONT_PORT
+  const API_URL = env.VITE_FRONT_API_URL ?? `http://localhost:${DEFAULT_PORT}`
+  const port = env.VITE_FRONT_PORT ? +env.VITE_FRONT_PORT : DEFAULT_FRONT_PORT
 
   return {
     plugins: [vue(), vueDevTools()],

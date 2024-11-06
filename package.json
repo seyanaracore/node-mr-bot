@@ -16,13 +16,14 @@
     "front:type-check": "npm run type-check -w @packages/frontend",
     "common:build": "npm run build -w @packages/common",
     "build": "npm run common:build && npm run bot:build && npm run front:build",
-    "start": "cross-env NODE_ENV=production pm2 start ecosystem.config.js",
-    "dev": "concurrently 'cross-env ORIGIN=\"http://localhost:8000\" npm run dev -w @packages/bot' 'npm run dev -w @packages/frontend'",
+    "start": "cross-env NODE_ENV=production pm2 start ecosystem.config.js --name bot",
+    "dev": "concurrently 'dotenvx run -- cross-env ORIGIN=\"http://localhost:8000\" npm run dev -w @packages/bot' 'dotenvx run -- npm run dev -w @packages/frontend'",
     "stop": "pm2 delete all",
     "prepare": "husky",
     "postinstall": "patch-package"
   },
   "devDependencies": {
+    "@dotenvx/dotenvx": "^1.22.0",
     "@packages/frontend": "^0.0.0",
     "@types/node": "^20.17.1",
     "concurrently": "^9.1.0",
