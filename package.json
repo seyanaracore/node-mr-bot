@@ -16,8 +16,8 @@
     "front:type-check": "npm run type-check -w @packages/frontend",
     "common:build": "npm run build -w @packages/common",
     "build": "npm run common:build && npm run bot:build && npm run front:build",
-    "prod": "npm run build && cross-env NODE_ENV=production pm2 start ecosystem.config.js",
-    "dev": "concurrently 'cross-env ORIGIN=\"http://localhost:8000\" pm2 start ecosystem.config.js -- --watch && pm2 logs' 'npm run dev -w @packages/frontend'",
+    "start": "cross-env NODE_ENV=production pm2 start ecosystem.config.js",
+    "dev": "concurrently 'cross-env ORIGIN=\"http://localhost:8000\" npm run dev -w @packages/bot' 'npm run dev -w @packages/frontend'",
     "stop": "pm2 delete all",
     "prepare": "husky",
     "postinstall": "patch-package"
