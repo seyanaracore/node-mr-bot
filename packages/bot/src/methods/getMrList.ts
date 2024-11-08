@@ -6,7 +6,14 @@ import type IBot from '@/models/bot'
 async function getMrList(this: IBot) {
   const eventId = uuidv4()
 
+  if (this.getMrListIsLoading) {
+    this.emit('getMrListCanceled', eventId, 'Already loading')
+    return { response: null, error: null }
+  }
+
   this.emit('getMrList', eventId)
+
+  this.getMrListIsLoading = true
 
   try {
     const mrList = await GitlabService.getAllProjectsMrListFull()
@@ -23,6 +30,8 @@ async function getMrList(this: IBot) {
     this.emit('getMrListError', eventId, origError.stack ?? origError.message)
 
     return res
+  } finally {
+    this.getMrListIsLoading = false
   }
 }
 

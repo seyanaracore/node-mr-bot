@@ -22,8 +22,12 @@ interface IBot extends EventEmitter {
   ): Promise<ServerReturnType<SendTextResponse, null> | ServerReturnType<null, ServerError>>
 
   getMrList(): Promise<
-  ServerReturnType<MergeRequestFull[], null> | ServerReturnType<null, ServerError>
+  ServerReturnType<MergeRequestFull[], null>
+  | ServerReturnType<null, ServerError>
+  | ServerReturnType<null, null>
   >
+
+  getMrListIsLoading: boolean
 
   sendMrInfo(): Promise<void>
 

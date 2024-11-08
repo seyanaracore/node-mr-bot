@@ -21,8 +21,20 @@ function intiLoggers(this: IBot) {
     this.logger.info(`getting mr list success: eventId=${eventId}`)
   })
 
+  this.on('getMrListCanceled', (eventId, message) => {
+    this.logger.info(`getting mr list canceled: eventId=${eventId}, message=${message}`)
+  })
+
   this.on('getMrListError', (eventId, errMsg) => {
-    this.logger.error(`getting mr list error: eventId=${eventId}, text=${errMsg}`)
+    this.logger.error(`getting mr list error: eventId=${eventId}, message=${errMsg}`)
+  })
+
+  this.on('sendMrInfo', (eventId) => {
+    this.logger.error(`sending mr info: eventId=${eventId}`)
+  })
+
+  this.on('sendMrInfoCanceled', (eventId, message) => {
+    this.logger.error(`sending mr info canceled: eventId=${eventId}, message=${message}`)
   })
 }
 

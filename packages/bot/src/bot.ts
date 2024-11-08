@@ -22,6 +22,8 @@ class Bot extends EventEmitter implements IBot {
 
   getMrList = getMrList
 
+  getMrListIsLoading = false
+
   get targetMrList() {
     return this.mrList.filter((mr) => {
       const hasIssues = !mr.blockingDiscussionsResolved

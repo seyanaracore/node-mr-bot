@@ -8,6 +8,9 @@ export type BotEvents = {
   messageSentSuccess: (eventId: EventId, body: BotMessageBody) => void
   messageSentError: (eventId: EventId, errMsg: string) => void
   getMrList: (eventId: EventId) => void
+  getMrListCanceled: (eventId: EventId, message: string) => void
   getMrListSuccess: (eventId: EventId, list: MergeRequestFull[]) => void
   getMrListError: (eventId: EventId, errMsg: string) => void
+  sendMrInfo: (eventId: EventId) => void
+  sendMrInfoCanceled: (eventId: EventId, message: string) => void
 }
