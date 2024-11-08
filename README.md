@@ -56,3 +56,11 @@ ___
 ### Env
 
 Подробнее в [.env.example](.env.example)
+
+___
+### Patches
+
+В проекте также есть патч vue-virtual-scroller пакета. 
+
+Патч добавит дтс файлы к компонентам DynamicScroller и DynamicScrollerItem.
+(через decalre module, к сожалению не получилось)

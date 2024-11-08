@@ -1,4 +1,4 @@
-# frontend
+# @packages/frontend
 
 This template should help get you started developing with Vue 3 in Vite.
 
@@ -30,4 +30,14 @@ npm run dev
 
 ```sh
 npm run build
+```
+
+### Деплой папки dist в папку dist бота
+```sh
+npm run deploy-only
+```
+
+### Прод сборка и деплой
+```sh
+npm run deploy
 ```
