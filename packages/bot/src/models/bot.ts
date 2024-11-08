@@ -27,7 +27,10 @@ interface IBot extends EventEmitter {
   | ServerReturnType<null, null>
   >
 
+  getMessage(mrsList: MergeRequestFull[]): string
+
   getMrListIsLoading: boolean
+  sendMrInfoIsLoading: boolean
 
   sendMrInfo(): Promise<void>
 

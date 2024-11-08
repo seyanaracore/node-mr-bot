@@ -1,36 +1,49 @@
 import { v4 as uuidv4 } from 'uuid'
-import groupBy from 'lodash/groupBy'
-import getMrInfoText from '@/helpers/getMrInfoText'
-import { ProjectName } from '@/enums/project'
 import type IBot from '@/models/bot'
 
 async function sendMrInfo(this: IBot) {
   const eventId = uuidv4()
 
-  this.emit('sendMrInfo', eventId)
+  this.emit('sendMrInfoInit', eventId)
 
-  const res = await this.getMrList()
-
-  if (!res.response) {
-    this.emit('sendMrInfoCanceled', eventId, 'no response from getMrList')
+  if (this.sendMrInfoIsLoading) {
+    this.logger.info('stopping more one "sendMrInfo", already is processing')
     return
   }
 
-  let text = ''
-  const mrsByProjectNames = groupBy(this.targetMrList, (mr) => ProjectName[mr.projectId as never])
+  this.sendMrInfoIsLoading = true
 
-  Object.entries(mrsByProjectNames).forEach(([projectName, mrs], idx) => {
-    if (idx !== 0) text += '\n'
-    text += `#${projectName}\n`
+  await this.getMrList()
 
-    mrs?.forEach((mr) => {
-      text += `  ${getMrInfoText(mr)}\n`
-    })
-  })
+  const { targetMrList } = this
 
-  await this.sendMessage({
+  if (!targetMrList.length) {
+    this.emit('sendMrInfo', eventId, { err: 'no target mrs', data: null })
+    return
+  }
+
+  const text = this.getMessage(targetMrList)
+
+  const { error } = await this.sendMessage({
     text,
   })
+
+  if (error) {
+    this.emit(
+      'sendMrInfo',
+      eventId,
+      {
+        err: 'data' in error
+          ? JSON.stringify(error.data)
+          : 'error sending mr info',
+        data: null,
+      },
+    )
+  } else {
+    this.emit('sendMrInfo', eventId, { err: null, data: null })
+  }
+
+  this.sendMrInfoIsLoading = false
 }
 
 export default sendMrInfo

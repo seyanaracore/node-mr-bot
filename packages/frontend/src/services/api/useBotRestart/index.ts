@@ -12,7 +12,7 @@ function useBotRestart() {
     error.value = null
 
     try {
-      const data = await api.modules.control.restart()
+      const { data } = await api.modules.control.restart()
 
       return handleServerResponse(data)
     } catch (e) {

@@ -6,6 +6,7 @@ import {
   sendMrInfo,
   initLoggers,
 } from './methods'
+import getMessage from './methods/getMessage'
 import { botLogger } from '@/logger'
 import { getConfig } from '@/utils/botConfig'
 import type IBot from './models/bot'
@@ -24,6 +25,8 @@ class Bot extends EventEmitter implements IBot {
 
   getMrListIsLoading = false
 
+  sendMrInfoIsLoading = false
+
   get targetMrList() {
     return this.mrList.filter((mr) => {
       const hasIssues = !mr.blockingDiscussionsResolved
@@ -35,6 +38,8 @@ class Bot extends EventEmitter implements IBot {
       return hasIssues || isApprovesNotEnough
     })
   }
+
+  getMessage = getMessage
 
   sendMrInfo = sendMrInfo
 

@@ -3,7 +3,7 @@ import { api } from '@/api'
 import { handleServerResponse, handleServerError } from '@/utils/server'
 import type { ServerError } from './types'
 
-function useBotRestart() {
+function useGetMessage() {
   const isLoading = ref(false)
   const error = ref<ServerError | null>(null)
 
@@ -12,7 +12,7 @@ function useBotRestart() {
     error.value = null
 
     try {
-      const { data } = await api.modules.message.send()
+      const { data } = await api.modules.message.get()
 
       return handleServerResponse(data)
     } catch (e) {
@@ -33,4 +33,4 @@ function useBotRestart() {
   }
 }
 
-export default useBotRestart
+export default useGetMessage

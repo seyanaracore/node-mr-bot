@@ -3,14 +3,19 @@ import type { MergeRequestFull } from '@/services/gitlab'
 
 type EventId = string | number
 
+type EventData<T = null> = {
+  err: string
+  data: null
+} | {
+  err: null,
+  data: T
+}
+
 export type BotEvents = {
-  messageSend: (eventId: EventId, body: BotMessageBody) => void
-  messageSentSuccess: (eventId: EventId, body: BotMessageBody) => void
-  messageSentError: (eventId: EventId, errMsg: string) => void
-  getMrList: (eventId: EventId) => void
-  getMrListCanceled: (eventId: EventId, message: string) => void
-  getMrListSuccess: (eventId: EventId, list: MergeRequestFull[]) => void
-  getMrListError: (eventId: EventId, errMsg: string) => void
-  sendMrInfo: (eventId: EventId) => void
-  sendMrInfoCanceled: (eventId: EventId, message: string) => void
+  messageSendInit: (eventId: EventId, body: BotMessageBody) => void
+  messageSent: (eventId: EventId, data: EventData<BotMessageBody>) => void
+  getMrListInit: (eventId: EventId) => void
+  getMrList: (eventId: EventId, data: EventData<MergeRequestFull[]>) => void
+  sendMrInfoInit: (eventId: EventId) => void
+  sendMrInfo: (eventId: EventId, data: EventData<null>) => void
 }
