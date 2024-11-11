@@ -8,7 +8,7 @@ import {
   NInputNumber,
   NCheckbox,
   NSelect,
-  NSpin,
+  NSpin, NDivider,
 } from 'naive-ui'
 import { ref } from 'vue'
 import ExcludedMrList from './ExcludedMrList'
@@ -103,7 +103,7 @@ getConfig()
   />
   <div
     v-else
-    class="fd-column gap-xs"
+    class="fd-column gap-lg"
   >
     <NForm
       ref="formRef"
@@ -160,6 +160,8 @@ getConfig()
         </NCheckbox>
       </div>
     </NForm>
+
+    <NDivider class="divider" />
 
     <div class="fd-row ai-center gap-base">
       <SkalaConfirm @positive-click="resetConfig">

@@ -82,10 +82,3 @@ import LogsList from './components/LogsList/LogsList.vue'
   }
 }
 </style>
-
-<style lang="scss" scoped>
-.divider {
-  margin: 0;
-  background: $colorBorderSecondary;
-}
-</style>

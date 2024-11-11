@@ -1,4 +1,6 @@
 @use './modules/margins.module' as margins;
+@use './variables' as *;
+
 
 .fd-row {
   display: flex;
@@ -31,6 +33,14 @@
 
 .w-100 {
   width: 100%;
+}
+
+.divider {
+  background: $colorBorderSecondary;
+
+  &:not(.n-divider--vertical) {
+    margin: 0;
+  }
 }
 
 @each $k, $v in margins.$mapModule {

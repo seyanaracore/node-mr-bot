@@ -42,9 +42,9 @@ const configStore = useConfigStore()
       </div>
     </div>
 
-    <div class="fd-row gap-xs">
+    <div class="fd-row gap-xs jc-sb">
       <NButton
-        type="default"
+        type="warning"
         @click="configStore.addExcludedItem"
       >
         Добавить
