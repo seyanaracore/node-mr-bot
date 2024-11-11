@@ -6,7 +6,7 @@
   "scripts": {
     "logs": "ts-node pmRunner.ts logs --lines 0",
     "stop": "ts-node pmRunner.ts delete",
-    "build": "tsc -p tsconfig.prod.json && tsc-alias -p tsconfig.prod.json",
+    "build": "ts-node build.ts",
     "dev": "ts-node pmRunner.ts start --watch --ignore-watch=\"*.log,config.json\" && npm run logs",
     "lint": "eslint './**/*.{js,ts}' --fix",
     "type-check": "tsc --noEmit"

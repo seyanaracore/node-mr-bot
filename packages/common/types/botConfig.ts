@@ -5,5 +5,6 @@ export type ScheduleConfig = {
 export type BotConfig = {
   approvesForMerge: number
   reviewChatId: string
+  excludedMrIds: string[]
   schedule: ScheduleConfig
 }

@@ -9,8 +9,9 @@ import {
   NCheckbox,
   NSelect,
   NSpin,
+  NTooltip,
 } from 'naive-ui'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import useConfigStore from '@/stores/config'
 import type { SelectOption } from 'naive-ui'
 
@@ -26,6 +27,16 @@ const timesList: SelectOption[] = Array.from({ length: 23 }, (_, i) => {
   return {
     value: val, label: val.toString(),
   }
+})
+
+const excludedMrsIdsModel = computed({
+  get() {
+    return configStore.config?.excludedMrIds?.join(', ') ?? ''
+  },
+  set(val) {
+    if (!configStore.config) return
+    configStore.config.excludedMrIds = val.split(', ')
+  },
 })
 
 async function getConfig() {
@@ -89,6 +100,23 @@ getConfig()
         <NInput
           v-model:value="configStore.config.reviewChatId"
         />
+      </NFormItem>
+      <NFormItem
+        label="Исключить айди"
+      >
+        <NInput
+          v-model:value="excludedMrsIdsModel"
+          placeholder="25, 30"
+        >
+          <template #suffix>
+            <NTooltip>
+              <template #trigger>
+                ?
+              </template>
+              ID мров через запятую. Например: 25, 30
+            </NTooltip>
+          </template>
+        </NInput>
       </NFormItem>
       <NFormItem
         label="Аппрувов для мерджа"
