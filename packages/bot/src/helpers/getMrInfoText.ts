@@ -21,8 +21,15 @@ function getMrInfoText(mr: MergeRequestFull) {
 
   text += ` | [${mr.author.name}]`
 
+  // mr.discussions - это массив вообще всех комментов.
+  // То есть автор открыл тред - первый коммент, кто-то ответил - второй
   const issues = mr.discussions.filter(({ discussion }, idx) => {
-    const isDuplicate = idx !== mr.discussions.findLastIndex((el) => el.discussion.id === discussion.id)
+    // Но discussion id - это айди всего треда, а не коммента.
+    // Прилетает первый коммент дискуссии, если первый индекс по айди комента соответствует итеририруемому,
+    // значит не дубликат оставляем в списке
+    // Прилетает следующий коммент, айдишник будет тот же самый, но индекс уже другой,
+    // значит это какой-то ответ автору дискусии и то-есть дубликат - добавляем в список
+    const isDuplicate = idx !== mr.discussions.findIndex((el) => el.discussion.id === discussion.id)
 
     return !(isDuplicate || discussion.resolved || !discussion.resolvable)
   })
