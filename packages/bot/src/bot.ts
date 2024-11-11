@@ -32,7 +32,7 @@ class Bot extends EventEmitter implements IBot {
       const hasIssues = !mr.blockingDiscussionsResolved
       const isApprovesNotEnough = mr.approvedBy.length < this.config.approvesForMerge
       const isDraft = mr.draft
-      // Не до конца надежная система, в целом могут быть два проекта с одинаковыми iid,
+      // Не до конца надежная система, в целом могут быть два мра между проектами с одинаковыми iid,
       // но кейс настолько редкий, что пусть будет так.
       const isExcluded = this.config.excludedMrIds.includes(mr.iid.toString())
 
