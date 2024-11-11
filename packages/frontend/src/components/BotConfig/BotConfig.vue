@@ -9,17 +9,41 @@ import {
   NCheckbox,
   NSelect,
   NSpin,
-  NTooltip,
 } from 'naive-ui'
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
+import ExcludedMrList from './ExcludedMrList'
 import useConfigStore from '@/stores/config'
+import useValidateForm from '@/composables/useValidateForm'
+import type { BotConfig } from '@/stores/config'
 import type { SelectOption } from 'naive-ui'
+import type { FormRulesByState } from '@/types/utils'
 
 const configStore = useConfigStore()
 const isLoading = ref(false)
 const message = useMessage()
 const isRestartForSave = ref(true)
 const isRestartForReset = ref(true)
+const formRef = ref()
+const validateForm = useValidateForm(formRef)
+
+const formRules: FormRulesByState<BotConfig> = {
+  reviewChatId: {
+    required: true,
+  },
+  approvesForMerge: {
+    required: true,
+  },
+  schedule: {
+    time: {
+      type: 'array',
+      required: false,
+    },
+  },
+  excludedMrs: {
+    type: 'array',
+    required: false,
+  },
+}
 
 const timesList: SelectOption[] = Array.from({ length: 23 }, (_, i) => {
   const val = i + 1
@@ -27,16 +51,6 @@ const timesList: SelectOption[] = Array.from({ length: 23 }, (_, i) => {
   return {
     value: val, label: val.toString(),
   }
-})
-
-const excludedMrsIdsModel = computed({
-  get() {
-    return configStore.config?.excludedMrIds?.join(', ') ?? ''
-  },
-  set(val) {
-    if (!configStore.config) return
-    configStore.config.excludedMrIds = val.split(', ')
-  },
 })
 
 async function getConfig() {
@@ -52,7 +66,9 @@ async function getConfig() {
 }
 
 async function updateConfig() {
-  if (isLoading.value) return
+  const isValid = await validateForm()
+
+  if (isLoading.value || !isValid) return
 
   isLoading.value = true
 
@@ -89,38 +105,24 @@ getConfig()
     class="fd-column gap-xs"
   >
     <NForm
+      ref="formRef"
+      :rules="formRules"
       class="config-form"
       :disabled="isLoading"
+      :model="configStore.config"
       @submit.prevent="updateConfig"
     >
       <NFormItem
         label="ID чата"
-        required
+        path="reviewChatId"
       >
         <NInput
           v-model:value="configStore.config.reviewChatId"
         />
       </NFormItem>
       <NFormItem
-        label="Исключить айди"
-      >
-        <NInput
-          v-model:value="excludedMrsIdsModel"
-          placeholder="25, 30"
-        >
-          <template #suffix>
-            <NTooltip>
-              <template #trigger>
-                ?
-              </template>
-              ID мров через запятую. Например: 25, 30
-            </NTooltip>
-          </template>
-        </NInput>
-      </NFormItem>
-      <NFormItem
         label="Аппрувов для мерджа"
-        required
+        path="approvesForMerge"
       >
         <NInputNumber
           v-model:value="configStore.config.approvesForMerge"
@@ -129,7 +131,7 @@ getConfig()
       </NFormItem>
       <NFormItem
         label="Время оповещения"
-        required
+        path="schedule.time"
       >
         <NSelect
           v-model:value="configStore.config.schedule.time"
@@ -137,6 +139,12 @@ getConfig()
           :options="timesList"
         />
       </NFormItem>
+
+      <div class="excluded-mr-list-container">
+        <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+        <label>Исключить мры</label>
+        <ExcludedMrList />
+      </div>
 
       <div class="fd-row ai-center gap-base">
         <NButton
@@ -170,5 +178,12 @@ getConfig()
 <style lang="scss" scoped>
 .config-form {
   max-width: 600px;
+}
+
+.excluded-mr-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: $marginXS;
+  margin-bottom: $marginLG;
 }
 </style>

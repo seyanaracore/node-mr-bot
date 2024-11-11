@@ -1,7 +1,7 @@
 {
   "approvesForMerge": 2,
   "reviewChatId": "0/0/bee4db4d-e684-4561-8fec-5cbce9d6403e",
-  "excludedMrIds": [],
+  "excludedMrs": [],
   "schedule": {
     "time": [10, 15]
   }

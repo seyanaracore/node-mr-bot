@@ -1,3 +1,5 @@
+import type { ExcludedMrItem } from "./excludedMrItem";
+
 export type ScheduleConfig = {
   time: number[]
 }
@@ -5,6 +7,6 @@ export type ScheduleConfig = {
 export type BotConfig = {
   approvesForMerge: number
   reviewChatId: string
-  excludedMrIds: string[]
+  excludedMrs: ExcludedMrItem[]
   schedule: ScheduleConfig
 }
