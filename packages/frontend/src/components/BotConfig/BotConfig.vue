@@ -12,6 +12,7 @@ import {
 } from 'naive-ui'
 import { ref } from 'vue'
 import ExcludedMrList from './ExcludedMrList'
+import SkalaConfirm from '@/components/common/SkalaConfirm'
 import useConfigStore from '@/stores/config'
 import useValidateForm from '@/composables/useValidateForm'
 import type { BotConfig } from '@/stores/config'
@@ -161,13 +162,16 @@ getConfig()
     </NForm>
 
     <div class="fd-row ai-center gap-base">
-      <NButton
-        type="error"
-        :loading="isLoading"
-        @click="resetConfig"
-      >
-        Сбросить конфиг
-      </NButton>
+      <SkalaConfirm @positive-click="resetConfig">
+        <template #trigger>
+          <NButton
+            type="error"
+            :loading="isLoading"
+          >
+            Сбросить конфиг
+          </NButton>
+        </template>
+      </SkalaConfirm>
       <NCheckbox v-model:checked="isRestartForReset">
         Перезапустить
       </NCheckbox>

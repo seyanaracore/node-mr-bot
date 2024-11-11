@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { NButton, NPopconfirm } from 'naive-ui'
+import { NButton } from 'naive-ui'
 import ExcludedMrItem from './ExcludedMrItem.vue'
 import useConfigStore from '@/stores/config'
+import SkalaConfirm from '@/components/common/SkalaConfirm'
 
 const configStore = useConfigStore()
 </script>
@@ -49,9 +50,7 @@ const configStore = useConfigStore()
         Добавить
       </NButton>
 
-      <NPopconfirm
-        @positive-click="configStore.clearExcludedItems"
-      >
+      <SkalaConfirm @positive-click="configStore.clearExcludedItems">
         <template #trigger>
           <NButton
             type="error"
@@ -59,8 +58,7 @@ const configStore = useConfigStore()
             Очистить
           </NButton>
         </template>
-        Точно очистить?
-      </NPopconfirm>
+      </SkalaConfirm>
     </div>
   </div>
 </template>
